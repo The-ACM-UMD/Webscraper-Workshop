@@ -3,7 +3,10 @@ Code for the ACM@UMD's webscraper workshop
 
 Notes:
 Written in python
+
 Webscraping done using selenium (install using pip install)
+
+I found this tutorial pretty helpful: https://brightdata.com/blog/how-tos/using-selenium-for-web-scraping
 
 TODO:
 
