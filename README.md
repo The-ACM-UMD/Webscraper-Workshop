@@ -1,10 +1,11 @@
 # Webscraper-Workshop
 Code for the ACM@UMD's webscraper workshop
 
+Notes:
+Written in python
+Webscraping done using beatifulsoup4 (install using pip install)
 
 TODO:
-
-Written in python
 
 code is in four different scripts
 
