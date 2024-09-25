@@ -15,4 +15,6 @@ WebscraperBFS - Recursive (Or Queue based) link following webscraper that instea
 WebscraperAStar - the same as above but this time implementing a heuristic, the heuristic is how many words in a user defined list the link/page has in it (e.g if a user has a heuristic list of [University, ACM, Maryland] and the webscraper sees a link/link description with the words 
 "ACM at University of Minnesota" the heuristic score would be 2) 
 
+WebscraperMThread - A* Webscraper with multithreading
+
 Once you have completed writing and testing a script commit it to main and leave a comment with your name in the script
