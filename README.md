@@ -3,7 +3,7 @@ Code for the ACM@UMD's webscraper workshop
 
 Notes:
 Written in python
-Webscraping done using beatifulsoup4 (install using pip install)
+Webscraping done using selenium (install using pip install)
 
 TODO:
 
