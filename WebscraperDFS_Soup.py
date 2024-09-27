@@ -14,7 +14,7 @@ def scrape(url, depth_left, path):
     
     else:
         try:
-            response = requests.get(url, timeout=0.01)
+            response = requests.get(url, timeout=0.05)
             if response.status_code != 200:
                 print(f"Error fetching {url}: Status code {response.status_code}")
                 return
