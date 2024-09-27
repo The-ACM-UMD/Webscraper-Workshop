@@ -44,6 +44,10 @@ def scrape(url, depth_left, path):
                 return
             
             # Parse the HTML content of the page using BeautifulSoup
+            # BeautifulSoup has several webpage parsers that converts the contents of the webpage,
+            # In this case the raw html code, and converts it to an easy to reference and read object
+            # lxml and html5lib are also good options but html.parser is built into python and is good
+            # enough for our purposes
             soup = BeautifulSoup(response.content, 'html.parser')
             
             # Get the page's title if available; otherwise, assign 'No Title'
