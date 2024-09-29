@@ -1,4 +1,5 @@
 # Import necessary libraries
+
 import requests  # to handle HTTP requests
 from bs4 import BeautifulSoup  # to parse HTML content of web pages
 from urllib.parse import urljoin  # to join relative URLs to the base URL
