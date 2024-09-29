@@ -3,8 +3,10 @@
 import requests  # to handle HTTP requests
 from bs4 import BeautifulSoup  # to parse HTML content of web pages
 from urllib.parse import urljoin  # to join relative URLs to the base URL
+import heapq
 
-url_queue = []
+url_minheap = []
+keywords = []
 visited_set = set() # A visited set to make sure we don't revisit old links
 target = "https://en.wikipedia.org/wiki/University_of_Maryland,_College_Park" # The target URL we are trying to reach
 
@@ -64,7 +66,12 @@ def scrape(url, depth_left, path):
             # Recursively visit each filtered link
             for href in hrefs_filtered:
                 # Add the current link to the path and continue scraping with reduced depth
-                url_queue.append((href, depth-1, path + [href]))
+                heuristic = 0
+                for keyword in keywords:
+                    if keyword in href.split():
+                        heuristic += 1
+
+                heapq.heappush(url_minheap,(((len(path) - heuristic)),(href, depth-1, path + [href])))
         
         # Handle any exceptions that occur during the request or scraping process
         except Exception as e:
@@ -79,8 +86,8 @@ if __name__ == "__main__":
     # Maximum recursion depth
     max_depth = 10
 
-    url_queue.append((start_url, max_depth, [start_url]))
+    heapq.heappush(url_minheap,(0,(start_url, max_depth, [start_url])))
     # Start the scraping process from the start_url with the specified maximum depth
-    while len(url_queue) != 0:
-        current_url, depth, path = url_queue.pop()
+    while len(url_minheap) != 0:
+        ( _ , (current_url, depth, path)) = heapq.heappop(url_minheap)
         scrape(current_url, depth, path)
