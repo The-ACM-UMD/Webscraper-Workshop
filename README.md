@@ -6,6 +6,8 @@ Written in python
 
 Webscraping done using beautifulsoup (selenium turned out to be too slow, however the selenium version is still up and ready to go as a visual demo) (install using pip install)
 
+pip install BeautifulSoup4
+
 For DFS the code is finished and it needs to be abstracted, we need to take the current scrape method and split it into two parts, one that takes in the url to search, depth left and the current path and returns a list of href links in the page (all this code is in the current scrape method) and a filter method that filters the hrefs and returns a filtered set of urls (this code is also already in DFS code)
 
 TODO:
