@@ -1,5 +1,5 @@
 # Webscraper-Workshop
-Code for the ACM@UMD's webscraper workshop
+Code for the ACM@UMD' webscraper workshop
 
 Notes:
 Written in python
