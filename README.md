@@ -27,7 +27,7 @@ Create a virtual environment
 #### 5. Open the code
 `code` <- to open code in VSCode
 
-### Project Structure
+## Project Structure
 The code base consists of four main scripts, each implementing a different web scraping startegy. 
 #### WebscraperDFS
 A recusive link-following web scraper that continues navigating through links until its locates the target link. 
@@ -40,6 +40,8 @@ Example: If the heuristic list includes ["University", "ACM", "Maryland"], a lin
 A web scraper that utilizes multithreading to enhance performance and efficiency.
 
 ## Challenge
-Find the shortest path, least number of links, from the UMD Wikipedia page to the ACM Wikipedia page. 
+Find the shortest path, least number of links, from the UMD Wikipedia page to the ACM Wikipedia page.
+
 Implement your own algorithms and use the scraper(keywords (A*),filter) to find the shortest path and scrape(keywords (A*),filter) to find the list of links that match those the path found by scraper().
+
 The person with the shortest path wins some ACM merch!
