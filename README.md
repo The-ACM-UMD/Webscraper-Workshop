@@ -1,28 +1,45 @@
 # Webscraper-Workshop
-Code for the ACM@UMD' webscraper workshop
 
-Notes:
-Written in python
+### Overview
+Welcome to the Webscraper Workshop codebase for ACM@UMD! This repository contains Python scripts designed for web scraping using various algorithms.
 
-Webscraping done using beautifulsoup (selenium turned out to be too slow, however the selenium version is still up and ready to go as a visual demo) (install using pip install)
+### Getting Started
+##### 1. Create project directory
+Open your terminal or command prompt
+Create a new directory for the workshop
+`mkdir webscraper-workshop`
+`cd webscraper-workshop`
 
-pip install BeautifulSoup4
+##### 2. Set up a virtual environment
+Create a virtual environment 
+`python -m venv /path/to/new/virtual/environment`
+###### Windows: `venv\Scripts\activate`
+###### macOS/Linux: `source venv/bin/activate`
 
-For DFS the code is finished and it needs to be abstracted, we need to take the current scrape method and split it into two parts, one that takes in the url to search, depth left and the current path and returns a list of href links in the page (all this code is in the current scrape method) and a filter method that filters the hrefs and returns a filtered set of urls (this code is also already in DFS code)
+##### 3. Install Dependencies
+`pip install BeautifulSoup4 requests`
+`pip install selenium`
 
-TODO:
+##### 4. Clone the repo
+`git clone` <repository-url>
+`cd` <repository-directory>
 
-code is in four different scripts
+##### 5. Open the code
+`code` <- to open code in VSCode
 
-WebscraperDFS - A recursive link following webscraper that just keeps going through the first link until it finds the target link - This is mostly finished only abstraction needs to be done
+#### Project Structure
+The code base consists of four main scripts, each implementing a different web scraping startegy. 
+##### WebscraperDFS
+A recusive link-following web scraper that continues navigating through links until its locates the target link. 
+##### WebscraperBFS 
+Implements a Breadth-First Search (BFS) approach to scraper using a queue.
+##### WebscraperAStar
+Similar to the BFS scraper, but uses a heuristic which evaluates how many words from a user-defined list appear in the link or page description.
+Example: If the heuristic list includes ["University", "ACM", "Maryland"], a link description like "ACM at University of Minnesota" would yield a heuristic score of 2.
+##### WebscraperMThread
+A web scraper that utilizes multithreading to enhance performance and efficiency.
 
-WebscraperBFS - Recursive (Or Queue based) link following webscraper that instead implements Breadth first search, this passes in a visited list at each set that contains a list of visited links to make sure there's no retreading
-
-WebscraperAStar - the same as above but this time implementing a heuristic, the heuristic is how many words in a user defined list the link/page has in it (e.g if a user has a heuristic list of [University, ACM, Maryland] and the webscraper sees a link/link description with the words 
-"ACM at University of Minnesota" the heuristic score would be 2) 
-
-WebscraperMThread - A* Webscraper with multithreading
-
-Once you have completed writing and testing a script commit it to main and leave a comment with your name in the script
-
-
+## Challenge
+Find the shortest path, least number of links, from the UMD Wikipedia page to the ACM Wikipedia page. 
+Implement your own algorithms and use the scraper(keywords (A*),filter) to find the shortest path and scrape(keywords (A*),filter) to find the list of links that match those the path found by scraper().
+The person with the shortest path wins some ACM merch!
