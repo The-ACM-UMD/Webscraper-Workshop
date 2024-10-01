@@ -1,4 +1,4 @@
-# Webscraper-Workshop
+# Wikipedia-Race-Webscraper-Workshop
 
 ## Overview
 Welcome to the Wikipedia Game Webscraper Workshop codebase for ACM@UMD! This repository contains Python scripts designed for Automating the Wikipedia Game using web scraping and various graph algorithms.
