@@ -25,11 +25,11 @@ macOS/Linux: `source venv/bin/activate`
 `pip install -r requirements.txt`
 
 #### 4. Clone the repo
-`git clone` <repository-url>
-`cd` <repository-directory>
+`git clone https://github.com/The-ACM-UMD/Webscraper-Workshop.git`
+`cd Webscraper-Workshop`
 
 #### 5. Open the code
-`code` <- to open code in VSCode
+`code WebscraperDFS.py` <- to open code in VSCode, you can also simply use open or notepad instead of code to open it in a txt file
 
 #### 6. Run the script being shown
 'python WebscraperDFS.py'
