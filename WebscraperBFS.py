@@ -35,7 +35,7 @@ def scrape(url, depth_left, path, filter_func, target):
     
     # If the depth limit is reached, stop the recursion
     elif depth_left == 0:
-        print("This is going nowhere\n")
+        print(".")
         return
     
     else:
