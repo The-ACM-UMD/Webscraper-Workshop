@@ -92,12 +92,14 @@ def scrape(url, depth_left, path, filter_func, target, keywords):
 
             # Recursively visit each filtered link
             for href in hrefs_filtered:
-                # Add the current link to the path and continue scraping with reduced depth
+                # find the heuristic score for each link
                 heuristic = 0
+                #we do this by checking the score for each keyword and summing the scores of all the keywords from our list found in the link
                 for keyword in keywords:
                     if keyword in href.split():
                         heuristic += heuristic_score(keyword)
 
+                # Add the link and its heuristic score to the minimum heap, higher scores and lower paths up to now are prioritized
                 heapq.heappush(url_minheap,(((len(path) + 3 - heuristic)),(href, depth-1, path + [href])))
         
         # Handle any exceptions that occur during the request or scraping process
