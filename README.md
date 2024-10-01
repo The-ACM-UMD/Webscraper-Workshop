@@ -52,9 +52,11 @@ Mac: `unzip Webscraper-Workshop.zip`
 
 #### 4. Install Dependencies
 
-enter the workshop directory: `cd Webscraper-Workshop`
+if you used git enter the workshop directory with: `cd Webscraper-Workshop`
 
-`pip install -r requirements.txt`
+if you downloaded the zip enter the directory with: `cd Webscraper-Workshop\Webscraper-Workshop-main`
+
+Then run: `pip install -r requirements.txt`
 
 #### 4.5. Open in file explorer
 On Windows: `explorer .`
