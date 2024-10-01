@@ -44,9 +44,10 @@ The code base consists of three main scripts, each implementing a different web 
 A recursive link-following web scraper that continues navigating through links until its locates the target link. 
 #### WebscraperBFS 
 Implements a Breadth-First Search (BFS) approach to scraper using a queue.
+Every link is now added to a visited set and the scraper cross references this set to make sure it isn't revisiting it's path
 #### WebscraperAStar
 Similar to the BFS scraper, but uses a heuristic which evaluates how many words from a user-defined list appear in the link or page description.
-Example: If the heuristic list includes ["University", "ACM", "Maryland"], a link description like "ACM at University of Minnesota" would yield a heuristic score of 2. The higher the score the more priority is given to searching that link first.
+Example: If the heuristic list includes ["University", "ACM", "Maryland"], a link description like "ACM at University of Minnesota" would yield a heuristic score of 2. The higher the score ,(and the lower the path length is so far), the more priority is given to searching that link first.
 
 ### Expected Output
 When running any of the following implementations above you should see a similar output to this :

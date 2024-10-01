@@ -98,7 +98,7 @@ def scrape(url, depth_left, path, filter_func, target, keywords):
                     if keyword in href.split():
                         heuristic += heuristic_score(keyword)
 
-                heapq.heappush(url_minheap,(((len(path) - heuristic)),(href, depth-1, path + [href])))
+                heapq.heappush(url_minheap,(((len(path) + 3 - heuristic)),(href, depth-1, path + [href])))
         
         # Handle any exceptions that occur during the request or scraping process
         except Exception as e:
@@ -110,19 +110,17 @@ if __name__ == "__main__":
     # Starting URL for scraping
     start_url = 'https://en.wikipedia.org/wiki/Association_for_Computing_Machinery'
     target = "https://en.wikipedia.org/wiki/University_of_Maryland,_College_Park" # The target URL we are trying to reach
-    
-    # Maximum recursion depth
-    max_depth = 10
 
     url_minheap = []
     visited_set = set() # A visited set to make sure we don't revisit old links
 
     # CHANGE THESE AS YOU PLEASE
+    max_depth = 10 # Maximum recursion depth
     def filter_func(next_url,current_url,path,title):
         return next_url.startswith("https://en.wikipedia.org/wiki/") and not ((next_url in current_url) or (current_url in next_url))
-    keywords = []
+    keywords = [] # These are the keywords the heuristic score is based on, the number of keywords found in the link = the heuristic scores for those keywords summed
     def heuristic_score(keyword):
-        return 1
+        return 1 # The heuristic score for every keyword
 
     heapq.heappush(url_minheap,(0,(start_url, max_depth, [start_url])))
     # Start the scraping process from the start_url with the specified maximum depth

@@ -81,11 +81,9 @@ if __name__ == "__main__":
     target = "https://en.wikipedia.org/wiki/University_of_Maryland,_College_Park"
     # Starting URL for scraping
     start_url = 'https://en.wikipedia.org/wiki/Association_for_Computing_Machinery'
-    
-    # Maximum recursion depth
-    max_depth = 10
 
     # CHANGE THESE AS YOU PLEASE
+    max_depth = 10 # Maximum recursion depth
     def filter_func(next_url,current_url,path,title):
         return next_url.startswith("https://en.wikipedia.org/wiki/") and not ((next_url in current_url) or (current_url in next_url))
 
