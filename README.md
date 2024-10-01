@@ -32,7 +32,11 @@ If you have git installed:
 
 `git clone https://github.com/The-ACM-UMD/Webscraper-Workshop.git`
 
-Otherwise:
+skip to step 4
+
+Otherwise follow steps 3.1 -> 4:
+
+#### 3.1 download the files
 
 Download the code for this workshop: 
 
@@ -40,15 +44,16 @@ Windows: `Invoke-WebRequest -Uri https://github.com/The-ACM-UMD/Webscraper-Works
 
 Mac: `curl -L -o Webscraper-Workshop.zip https://github.com/The-ACM-UMD/Webscraper-Workshop/archive/refs/heads/main.zip`
 
-Unzip the code:
+#### 3.2 Unzip the code:
 
 Windows: `Expand-Archive -Path Webscraper-Workshop.zip -DestinationPath ./Webscraper-Workshop`
 
 Mac: `unzip Webscraper-Workshop.zip`
 
-Finally: `cd Webscraper-Workshop`
-
 #### 4. Install Dependencies
+
+enter the workshop directory: `cd Webscraper-Workshop`
+
 `pip install -r requirements.txt`
 
 #### 4.5. Open in file explorer
