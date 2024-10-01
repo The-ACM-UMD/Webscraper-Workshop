@@ -5,7 +5,7 @@ Welcome to the Wikipedia Game Webscraper Workshop codebase for ACM@UMD! This rep
 
 ## Getting Started
 #### 1. Create project directory
-Open your terminal or command prompt
+Open your terminal or command prompt IN ADMIN
 
 Create a new directory for the workshop
 
@@ -23,6 +23,8 @@ Create a virtual environment
 Windows: `ACMWorkshop\Scripts\activate`
 
 macOS/Linux: `source venv/bin/activate`
+
+(If you get an error on this step run Set-ExecutionPolicy RemoteSigned)
 
 #### 3. Install Dependencies
 `pip install -r requirements.txt`
