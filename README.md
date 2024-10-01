@@ -33,6 +33,8 @@ On Mac: `open .`
 #### 5. Open the code
 `code WebscraperDFS.py` <- to open code in VSCode, you can also simply use open or notepad instead of code to open it in a txt file (on Mac use `open -a TextEdit WebscraperDFS.py`)
 
+Alternatively you can use the editor of your choice to open it from the file explorer window that we opened in the last step
+
 #### 6. Run the script being shown
 'python WebscraperDFS.py'
 
