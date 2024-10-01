@@ -59,7 +59,7 @@ def scrape(url, depth_left, path, filter_func, target, keywords):
     else:
         try:
             # Send a GET request to the URL with a timeout of 0.05 seconds
-            response = requests.fetch_with_retry(url)
+            response = requests.get(url, timeout = 0.5)
             
             # If the response status code is not 200 (OK), print an error message and stop
             if response.status_code != 200:
