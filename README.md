@@ -73,12 +73,12 @@ Alternatively you can use the editor of your choice to open it from the file exp
 
 ## Project Structure
 The code base consists of three main scripts, each implementing a different web scraping strategy. Each is more advanced than the last and will be released in ten minute intervals
-#### WebscraperDFS
+#### WebscraperDFS.py
 A recursive link-following web scraper that continues navigating through links until its locates the target link. 
-#### WebscraperBFS 
+#### WebscraperBFS.py 
 Implements a Breadth-First Search (BFS) approach to scraper using a queue.
 Every link is now added to a visited set and the scraper cross references this set to make sure it isn't revisiting it's path
-#### WebscraperAStar
+#### WebscraperAStar.py
 Similar to the BFS scraper, but uses a heuristic which evaluates how many words from a user-defined list appear in the link or page description.
 Example: If the heuristic list includes ["University", "ACM", "Maryland"], a link description like "ACM at University of Minnesota" would yield a heuristic score of 2. The higher the score ,(and the lower the path length is so far), the more priority is given to searching that link first.
 
