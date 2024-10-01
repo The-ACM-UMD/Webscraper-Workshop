@@ -96,7 +96,7 @@ def scrape(url, depth_left, path, filter_func, target, keywords):
                 heuristic = 0
                 #we do this by checking the score for each keyword and summing the scores of all the keywords from our list found in the link
                 for keyword in keywords:
-                    if keyword in href.split():
+                    if keyword.lower() in href.lower():
                         heuristic += heuristic_score(keyword)
 
                 # Add the link and its heuristic score to the minimum heap, higher scores and lower paths up to now are prioritized
