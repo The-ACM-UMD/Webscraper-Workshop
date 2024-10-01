@@ -26,14 +26,15 @@ macOS/Linux: `source ACMWorkshop/bin/activate`
 
 (If you get an error on this step run `Set-ExecutionPolicy RemoteSigned`)
 
-#### 3. Install Dependencies
-`pip install -r requirements.txt`
-
-#### 4. Clone the repo
+#### 3. Clone the repo
 `git clone https://github.com/The-ACM-UMD/Webscraper-Workshop.git`
 
 `cd Webscraper-Workshop`
 
+#### 4. Install Dependencies
+`pip install -r requirements.txt`
+
+#### 4.5. Open in file explorer
 On Windows: `explorer .`
 
 On Mac: `open .`
