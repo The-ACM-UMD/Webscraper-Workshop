@@ -96,4 +96,6 @@ Find the shortest path, least number of links, from the UMD Wikipedia page to th
 
 Implement your own algorithms, there are a number of ways to improve the default scraping function in main, such as implementing better heuristics and better filtering. If you're confident in your coding abilities you can even change the scrape function as you wish!
 
+The main ways to change the code in these scripts is to change the `filter_func` and in A* to change the list of `keywords`. These are marked with the comment `# CHANGE THESE AS YOU PLEASE`
+
 The person with the shortest path at the end of the workshop wins some ACM merch!
