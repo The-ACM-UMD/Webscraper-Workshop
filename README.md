@@ -40,7 +40,8 @@ Otherwise follow steps 3.1 -> 4:
 
 Download the code for this workshop: 
 
-Windows: `Invoke-WebRequest -Uri https://github.com/The-ACM-UMD/Webscraper-Workshop/archive/refs/heads/main.zip -OutFile Webscraper-Workshop.zip`
+Windows: `Invoke-WebRequest -Uri https://github.com/The-ACM-UMD/Webscraper-Workshop/archive/refs/heads/main.zip -OutFile Webscraper-Workshop.zip` or if that doesn't work: `curl -L -o Webscraper-Workshop.zip https://github.com/The-ACM-UMD/Webscraper-Workshop/archive/refs/heads/main.zip`
+and if that doesn't work: `wget https://github.com/The-ACM-UMD/Webscraper-Workshop/archive/refs/heads/main.zip -O Webscraper-Workshop.zip`
 
 Mac: `curl -L -o Webscraper-Workshop.zip https://github.com/The-ACM-UMD/Webscraper-Workshop/archive/refs/heads/main.zip`
 
