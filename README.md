@@ -24,7 +24,7 @@ Windows: `ACMWorkshop\Scripts\activate`
 
 macOS/Linux: `source venv/bin/activate`
 
-(If you get an error on this step run Set-ExecutionPolicy RemoteSigned)
+(If you get an error on this step run `Set-ExecutionPolicy RemoteSigned`)
 
 #### 3. Install Dependencies
 `pip install -r requirements.txt`
