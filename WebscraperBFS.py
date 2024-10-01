@@ -6,6 +6,20 @@ from urllib.parse import urljoin  # to join relative URLs to the base URL
 
 # Define a recursive web scraper function
 def scrape(url, depth_left, path, filter_func, target):
+    """
+    Recursively scrapes web pages starting from a given URL up to a specified depth, 
+    searching for a target URL and printing the path if found. Otherwise it scrapes the page for all links
+    of interest based on the filter argument and adds them to a queue, links are later picked from this queue
+    in the "main" function to scrape again.
+    Args:
+        url (str): The starting URL to scrape.
+        depth_left (int): The remaining depth to continue scraping.
+        path (list): The list of URLs visited so far.
+        filter_func (function): A function to filter valid URLs to visit.
+        target (str): The target URL to find.
+    Returns:
+        None
+    """
     # Check if page has been visited and if not add it to the visited set
     if url in visited_set:
         return

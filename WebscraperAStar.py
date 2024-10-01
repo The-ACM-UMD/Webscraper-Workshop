@@ -9,6 +9,13 @@ import heapq
 def scrape(url, depth_left, path, filter_func, target, keywords):
     """
     Recursively scrapes web pages starting from a given URL, searching for a target URL within a specified depth.
+    It takes in a filtering function and a set of keywords. It scrapes the current url for all links of interest using 
+    the filter. 
+    Each link is then assigned a heuristic value based on how many keywords are in the link text. These links
+    are each assigned a new value ({length of the path thus far} - {heuristic value of the link}) and 
+    are then added to a minimum heap. In the main function the link at the top of the heap (the one with the minimum value)
+    is then picked to scrape again until a path is found. The smallest value has the best chance to yield the shortest path
+
     Args:
         url (str): The starting URL to scrape.
         depth_left (int): The remaining depth to continue scraping.
