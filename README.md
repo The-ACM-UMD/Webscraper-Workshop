@@ -22,7 +22,7 @@ Create a virtual environment
 
 Windows: `ACMWorkshop\Scripts\activate`
 
-macOS/Linux: `source venv/bin/activate`
+macOS/Linux: `source ACMWorkshop/bin/activate`
 
 (If you get an error on this step run `Set-ExecutionPolicy RemoteSigned`)
 
