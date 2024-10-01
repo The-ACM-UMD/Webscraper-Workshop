@@ -27,16 +27,21 @@ macOS/Linux: `source ACMWorkshop/bin/activate`
 (If you get an error on this step run `Set-ExecutionPolicy RemoteSigned`)
 
 #### 3. Clone the repo
-If you have git installed skip to git clone:
-
-Install git:
-Windows: `winget install --id Git.Git -e --source winget`
-
-MacOS: `brew install git` (if you get an error `/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"`) 
+If you have git installed: 
 
 `git clone https://github.com/The-ACM-UMD/Webscraper-Workshop.git`
 
-`cd Webscraper-Workshop`
+Otherwise:
+
+Download the code for this workshop: 
+Windows: `Invoke-WebRequest -Uri https://github.com/The-ACM-UMD/Webscraper-Workshop/archive/refs/heads/main.zip -OutFile Webscraper-Workshop.zip`
+Mac: `curl -L -o Webscraper-Workshop.zip https://github.com/The-ACM-UMD/Webscraper-Workshop/archive/refs/heads/main.zip`
+
+Unzip the code:
+Windows: `Expand-Archive -Path Webscraper-Workshop.zip -DestinationPath ./Webscraper-Workshop`
+Mac: `unzip Webscraper-Workshop.zip`
+
+Finally: `cd Webscraper-Workshop`
 
 #### 4. Install Dependencies
 `pip install -r requirements.txt`
