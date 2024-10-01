@@ -27,9 +27,11 @@ macOS/Linux: `source venv/bin/activate`
 #### 4. Clone the repo
 `git clone https://github.com/The-ACM-UMD/Webscraper-Workshop.git`
 `cd Webscraper-Workshop`
+On Windows: `explorer .`
+On Mac: `open .`
 
 #### 5. Open the code
-`code WebscraperDFS.py` <- to open code in VSCode, you can also simply use open or notepad instead of code to open it in a txt file
+`code WebscraperDFS.py` <- to open code in VSCode, you can also simply use open or notepad instead of code to open it in a txt file (on Mac use `open -a TextEdit WebscraperDFS.py`)
 
 #### 6. Run the script being shown
 'python WebscraperDFS.py'
