@@ -27,6 +27,13 @@ macOS/Linux: `source ACMWorkshop/bin/activate`
 (If you get an error on this step run `Set-ExecutionPolicy RemoteSigned`)
 
 #### 3. Clone the repo
+If you have git installed skip to git clone:
+
+Install git:
+Windows: `winget install --id Git.Git -e --source winget`
+
+MacOS: `brew install git` (if you get an error `/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"`) 
+
 `git clone https://github.com/The-ACM-UMD/Webscraper-Workshop.git`
 
 `cd Webscraper-Workshop`
