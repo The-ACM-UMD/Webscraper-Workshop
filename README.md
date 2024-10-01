@@ -18,6 +18,8 @@ Create a virtual environment
 
 `python -m venv ACMworkshop` (you can substitute another name for ACMWorkshop)
 
+(If you get an error on this step you probably do not have python installed run: `python` without any arguments to install it)
+
 Windows: `ACMWorkshop\Scripts\activate`
 
 macOS/Linux: `source venv/bin/activate`
