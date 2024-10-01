@@ -1,11 +1,11 @@
-# Webscraper-Workshop
+# Wikipedia-Race-Webscraper-Workshop
 
 ## Overview
 Welcome to the Wikipedia Game Webscraper Workshop codebase for ACM@UMD! This repository contains Python scripts designed for Automating the Wikipedia Game using web scraping and various graph algorithms.
 
 ## Getting Started
 #### 1. Create project directory
-Open your terminal or command prompt
+Open your terminal or command prompt IN ADMIN
 
 Create a new directory for the workshop
 
@@ -18,18 +18,47 @@ Create a virtual environment
 
 `python -m venv ACMworkshop` (you can substitute another name for ACMWorkshop)
 
+(If you get an error on this step you probably do not have python installed run: `python` without any arguments to install it)
+
 Windows: `ACMWorkshop\Scripts\activate`
 
-macOS/Linux: `source venv/bin/activate`
+macOS/Linux: `source ACMWorkshop/bin/activate`
 
-#### 3. Install Dependencies
-`pip install -r requirements.txt`
+(If you get an error on this step run `Set-ExecutionPolicy RemoteSigned`)
 
-#### 4. Clone the repo
+#### 3. Clone the repo
+
+If you have git installed: 
+
 `git clone https://github.com/The-ACM-UMD/Webscraper-Workshop.git`
 
-`cd Webscraper-Workshop`
+skip to step 4
 
+Otherwise follow steps 3.1 -> 4:
+
+#### 3.1 download the files
+
+Download the code for this workshop: 
+
+Windows: `Invoke-WebRequest -Uri https://github.com/The-ACM-UMD/Webscraper-Workshop/archive/refs/heads/main.zip -OutFile Webscraper-Workshop.zip`
+
+Mac: `curl -L -o Webscraper-Workshop.zip https://github.com/The-ACM-UMD/Webscraper-Workshop/archive/refs/heads/main.zip`
+
+#### 3.2 Unzip the code:
+
+Windows: `Expand-Archive -Path Webscraper-Workshop.zip -DestinationPath ./Webscraper-Workshop`
+
+Mac: `unzip Webscraper-Workshop.zip`
+
+#### 4. Install Dependencies
+
+if you used git enter the workshop directory with: `cd Webscraper-Workshop`
+
+if you downloaded the zip enter the directory with: `cd Webscraper-Workshop\Webscraper-Workshop-main`
+
+Then run: `pip install -r requirements.txt`
+
+#### 4.5. Open in file explorer
 On Windows: `explorer .`
 
 On Mac: `open .`
@@ -58,7 +87,7 @@ When running any of the following implementations above you should see a similar
 `Visiting Category:Accuracy disputes from February 2019 - Wikipedia at https://en.wikipedia.org/wiki/Category:Accuracy_disputes_from_February_2019`
 
 However you may experience some time out errors like: 
-`Error fetching https://en.wikipedia.org/wiki/Category:Tracking_categories: HTTPSConnectionPool(host='en.wikipedia.org', port=443): Read timed out. (read timeout=0.5)`
+`Error fetching https://en.wikipedia.org/wiki/Category:Tracking_categories: HTTPSConnectionPool(host='en.wikipedia.org', port=443): Read timed out. (read timeout=0.5)` if you see these then consider increasing the value of `timeout` in `response = requests.get(url, timeout=0.05)` in the code
 
 If you are seeing both outputs, then proceed to the challenge!
 
@@ -66,5 +95,7 @@ If you are seeing both outputs, then proceed to the challenge!
 Find the shortest path, least number of links, from the UMD Wikipedia page to the ACM Wikipedia page.
 
 Implement your own algorithms, there are a number of ways to improve the default scraping function in main, such as implementing better heuristics and better filtering. If you're confident in your coding abilities you can even change the scrape function as you wish!
+
+The main ways to change the code in these scripts is to change the `filter_func` and in A* to change the list of `keywords`. These are marked with the comment `# CHANGE THESE AS YOU PLEASE`
 
 The person with the shortest path at the end of the workshop wins some ACM merch!
