@@ -87,7 +87,7 @@ When running any of the following implementations above you should see a similar
 `Visiting Category:Accuracy disputes from February 2019 - Wikipedia at https://en.wikipedia.org/wiki/Category:Accuracy_disputes_from_February_2019`
 
 However you may experience some time out errors like: 
-`Error fetching https://en.wikipedia.org/wiki/Category:Tracking_categories: HTTPSConnectionPool(host='en.wikipedia.org', port=443): Read timed out. (read timeout=0.5)`
+`Error fetching https://en.wikipedia.org/wiki/Category:Tracking_categories: HTTPSConnectionPool(host='en.wikipedia.org', port=443): Read timed out. (read timeout=0.5)` if you see these then consider increasing the value of `timeout` in `response = requests.get(url, timeout=0.05)` in the code
 
 If you are seeing both outputs, then proceed to the challenge!
 
