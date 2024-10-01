@@ -63,7 +63,7 @@ Mac: `unzip Webscraper-Workshop.zip`
 
 if you used git enter the workshop directory with: `cd Webscraper-Workshop`
 
-if you downloaded the zip enter the directory with: `cd Webscraper-Workshop\Webscraper-Workshop-main`
+if you downloaded the zip enter the directory with: `cd Webscraper-Workshop\Webscraper-Workshop-main` or `cd Webscraper-Workshop-main`
 
 Then run: `pip install -r requirements.txt`
 
