@@ -1,49 +1,93 @@
-from selenium import webdriver
+# Import necessary libraries
 
-from selenium.webdriver.common.by import By
-from urllib.parse import urljoin, urlparse
-import time # used in case we get hit by anti ddos measures
+import requests  # to handle HTTP requests
+from bs4 import BeautifulSoup  # to parse HTML content of web pages
+from urllib.parse import urljoin  # to join relative URLs to the base URL
 
-path = []
-target = "https://en.wikipedia.org/wiki/University_of_Maryland,_College_Park"
-
-def scrape(url,depth_left,driver,path):
-    if url == target:
-        return path
+# Define a recursive web scraper function
+def scrape(url: str, depth_left: int, path: list[str], filter_func, target):
+    """
+    Recursively scrapes web pages starting from a given URL up to a specified depth, 
+    searching for a target URL and printing the path of visited URLs.
+    Args:
+        url (str): The starting URL to scrape.
+        depth_left (int): The remaining depth to continue scraping.
+        path (list): The list of URLs visited so far.
+        filter_func (function): A function to filter URLs to visit.
+        target (str): The target URL to find.
+    Returns:
+        None
+    """
     
+    # If the current URL matches the target, return the path of visited URLs
+    if url == target:
+        print(f"path of length {len(path)} found: {path}")
+        quit()
+    
+    # If the depth limit is reached, stop the recursion
     elif depth_left == 0:
-        return "This is going nowhere\n"
+        print("This is going nowhere\n")
+        return
     
     else:
         try:
-            driver.get(url)
-            driver.implicitly_wait(0.01) # time driver waits for page to load
+            # Send a GET request to the URL with a timeout of 0.05 seconds
+            response = requests.get(url, timeout=0.05)
+            
+            # If the response status code is not 200 (OK), print an error message and stop
+            if response.status_code != 200:
+                print(f"Error fetching {url}: Status code {response.status_code}")
+                return
+            
+            # Parse the HTML content of the page using BeautifulSoup
+            # BeautifulSoup has several webpage parsers that converts the contents of the webpage,
+            # In this case the raw html code, and converts it to an easy to reference and read object
+            # lxml and html5lib are also good options but html.parser is built into python and is good
+            # enough for our purposes
+            soup = BeautifulSoup(response.content, 'html.parser')
+            
+            # Get the page's title if available; otherwise, assign 'No Title'
+            title = soup.title.string if soup.title else 'No Title'
+            
+            # Print the current page title and URL
+            print(f"Visiting {title} at {url}\n")
 
-            title = driver.title # current page title
-            print(f"Visiting {title} at {url}\n") # print with url
+            # Find all anchor (<a>) tags with the href attribute to get links
+            links = soup.find_all('a', href=True)
+            
+            # Create a list of full URLs by joining the base URL with relative links
+            hrefs = [urljoin(url, link['href']) for link in links]
+            
+            # Filter the links to only include valid Wikipedia article URLs
+            hrefs_filtered = filter(
+                lambda x: filter_func(x, url, path, title),  # avoid visiting the same or closely related pages
+                hrefs
+            )
 
-            links = driver.find_elements(By.TAG_NAME, 'a') # we get all elements in the webpage that have the tag 'a', i.e anchor elements/hyperlinks
-            # Filter to only Wikipedia article links
-            hrefs = [link.get_attribute('href') for link in links if link.get_attribute('href')]
-            hrefs_filtered = filter(lambda x: x.startswith("https://en.wikipedia.org/wiki/") and not ((x in url) or (url in x)), hrefs)
-            print(hrefs_filtered)
-
+            # Recursively visit each filtered link
             for href in hrefs_filtered:
                 print(f"Attempting to visit {href}\n")
-                return scrape(href, depth_left - 1, driver, path + [href])       
+                # Add the current link to the path and continue scraping with reduced depth
+                return scrape(href, depth_left - 1, path + [href], filter_func, target)
+        
+        # Handle any exceptions that occur during the request or scraping process
         except Exception as e:
             print(f"Error fetching {url}: {e}")
 
+# Main block to start scraping
 if __name__ == "__main__":
-    start_url = 'https://en.wikipedia.org/wiki/Association_for_Computing_Machinery'  # starting url
-    max_depth = 10  # recursion limit
 
-    # Set up the WebDriver
-    driver = webdriver.Chrome()
+    # The target URL we are trying to reach
+    target = "https://en.wikipedia.org/wiki/University_of_Maryland,_College_Park"
+    # Starting URL for scraping
+    start_url = 'https://en.wikipedia.org/wiki/Association_for_Computing_Machinery'
+    
+    # Maximum recursion depth
+    max_depth = 10
 
-    try:
-        scrape(start_url, max_depth, driver,[])
-    finally:
-        driver.quit()
+    # CHANGE THESE AS YOU PLEASE
+    def filter_func(next_url,current_url,path,title):
+        return next_url.startswith("https://en.wikipedia.org/wiki/") and not ((next_url in current_url) or (current_url in next_url))
 
-
+    # Start the scraping process from the start_url with the specified maximum depth
+    scrape(start_url, max_depth, [], filter_func, target)

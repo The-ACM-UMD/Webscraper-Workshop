@@ -5,24 +5,45 @@ from bs4 import BeautifulSoup  # to parse HTML content of web pages
 from urllib.parse import urljoin  # to join relative URLs to the base URL
 import heapq
 
-url_minheap = []
-keywords = []
-visited_set = set() # A visited set to make sure we don't revisit old links
-target = "https://en.wikipedia.org/wiki/University_of_Maryland,_College_Park" # The target URL we are trying to reach
+# Define the web scraper function
+def scrape(url, depth_left, path, filter_func, target, keywords):
+    """
+    Recursively scrapes web pages starting from a given URL, searching for a target URL within a specified depth.
+    Args:
+        url (str): The starting URL to scrape.
+        depth_left (int): The remaining depth to continue scraping.
+        path (list): The current path of URLs visited.
+        filter_func (function): A function to filter valid URLs to visit.
+        target (str): The target URL to find.
+        keywords (list): A list of keywords to use for heuristic scoring.
+    Returns:
+        None
+    Raises:
+        Exception: If an error occurs during the request or scraping process.
+    Behavior:
+        - Checks if the URL has already been visited to avoid revisits.
+        - If the target URL is found, prints the path and exits.
+        - Stops recursion if the depth limit is reached.
+        - Sends a GET request to the URL and handles non-200 status codes.
+        - Parses the HTML content using BeautifulSoup.
+        - Prints the title and URL of the current page.
+        - Finds and filters links on the page.
+        - Recursively visits each filtered link with updated depth and path.
+        - Uses a heuristic based on keywords to prioritize links.
+    """
 
-# Define a recursive web scraper function
-def scrape(url, depth_left, path):
     # Check if page has been visited and if not add it to the visited set
     if url in visited_set:
         return
     
-    # If the current URL matches the target, return the path of visited URLs
     if url == target:
-        return path
+        print(f"path of length {len(path)} found: {path}")
+        quit()
     
     # If the depth limit is reached, stop the recursion
     elif depth_left == 0:
-        return "This is going nowhere\n"
+        print("This is going nowhere\n")
+        return
     
     else:
         try:
@@ -58,8 +79,7 @@ def scrape(url, depth_left, path):
             
             # Filter the links to only include valid Wikipedia article URLs
             hrefs_filtered = filter(
-                lambda x: x.startswith("https://en.wikipedia.org/wiki/") 
-                          and not (x in visited_set),  # avoid visiting the same or closely related pages and already visited pages
+                lambda x: filter_func(x, url, path, title),  # avoid visiting the same or closely related pages
                 hrefs
             )
 
@@ -69,7 +89,7 @@ def scrape(url, depth_left, path):
                 heuristic = 0
                 for keyword in keywords:
                     if keyword in href.split():
-                        heuristic += 1
+                        heuristic += heuristic_score(keyword)
 
                 heapq.heappush(url_minheap,(((len(path) - heuristic)),(href, depth-1, path + [href])))
         
@@ -82,12 +102,23 @@ if __name__ == "__main__":
 
     # Starting URL for scraping
     start_url = 'https://en.wikipedia.org/wiki/Association_for_Computing_Machinery'
+    target = "https://en.wikipedia.org/wiki/University_of_Maryland,_College_Park" # The target URL we are trying to reach
     
     # Maximum recursion depth
     max_depth = 10
+
+    url_minheap = []
+    visited_set = set() # A visited set to make sure we don't revisit old links
+
+    # CHANGE THESE AS YOU PLEASE
+    def filter_func(next_url,current_url,path,title):
+        return next_url.startswith("https://en.wikipedia.org/wiki/") and not ((next_url in current_url) or (current_url in next_url))
+    keywords = []
+    def heuristic_score(keyword):
+        return 1
 
     heapq.heappush(url_minheap,(0,(start_url, max_depth, [start_url])))
     # Start the scraping process from the start_url with the specified maximum depth
     while len(url_minheap) != 0:
         ( _ , (current_url, depth, path)) = heapq.heappop(url_minheap)
-        scrape(current_url, depth, path)
+        scrape(current_url, depth, path, filter_func, target, keywords)

@@ -4,23 +4,21 @@ import requests  # to handle HTTP requests
 from bs4 import BeautifulSoup  # to parse HTML content of web pages
 from urllib.parse import urljoin  # to join relative URLs to the base URL
 
-url_queue = []
-visited_set = set() # A visited set to make sure we don't revisit old links
-target = "https://en.wikipedia.org/wiki/University_of_Maryland,_College_Park" # The target URL we are trying to reach
-
 # Define a recursive web scraper function
-def scrape(url, depth_left, path):
+def scrape(url, depth_left, path, filter_func, target):
     # Check if page has been visited and if not add it to the visited set
     if url in visited_set:
         return
     
     # If the current URL matches the target, return the path of visited URLs
     if url == target:
-        return path
+        print(f"path of length {len(path)} found: {path}")
+        quit()
     
     # If the depth limit is reached, stop the recursion
     elif depth_left == 0:
-        return "This is going nowhere\n"
+        print("This is going nowhere\n")
+        return
     
     else:
         try:
@@ -55,13 +53,13 @@ def scrape(url, depth_left, path):
             hrefs = [urljoin(url, link['href']) for link in links]
             
             # Filter the links to only include valid Wikipedia article URLs
+            # Filter the links to only include valid Wikipedia article URLs
             hrefs_filtered = filter(
-                lambda x: x.startswith("https://en.wikipedia.org/wiki/") 
-                          and not (x in visited_set),  # avoid visiting the same or closely related pages and already visited pages
+                lambda x: filter_func(x, url, path, title),  # avoid visiting the same or closely related pages
                 hrefs
             )
 
-            # Recursively visit each filtered link
+            # Add each filtered link, the path to get there and the depth remaining to the queue
             for href in hrefs_filtered:
                 # Add the current link to the path and continue scraping with reduced depth
                 url_queue.append((href, depth-1, path + [href]))
@@ -75,12 +73,20 @@ if __name__ == "__main__":
 
     # Starting URL for scraping
     start_url = 'https://en.wikipedia.org/wiki/Association_for_Computing_Machinery'
+    target = "https://en.wikipedia.org/wiki/University_of_Maryland,_College_Park" # The target URL we are trying to reach
     
     # Maximum recursion depth
     max_depth = 10
+
+    url_queue = []
+    visited_set = set() # A visited set to make sure we don't revisit old links
+
+    # CHANGE THESE AS YOU PLEASE
+    def filter_func(next_url,current_url,path,title):
+        return next_url.startswith("https://en.wikipedia.org/wiki/") and not ((next_url in current_url) or (current_url in next_url))
 
     url_queue.append((start_url, max_depth, [start_url]))
     # Start the scraping process from the start_url with the specified maximum depth
     while len(url_queue) != 0:
         current_url, depth, path = url_queue.pop()
-        scrape(current_url, depth, path)
+        scrape(current_url, depth, path, filter_func, target)
