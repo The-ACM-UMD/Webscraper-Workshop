@@ -40,7 +40,7 @@ On Mac: `open .`
 Alternatively you can use the editor of your choice to open it from the file explorer window that we opened in the last step
 
 #### 6. Run the script being shown
-'python WebscraperDFS.py'
+`python WebscraperDFS.py`
 
 ## Project Structure
 The code base consists of three main scripts, each implementing a different web scraping strategy. Each is more advanced than the last and will be released in ten minute intervals
