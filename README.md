@@ -1,7 +1,7 @@
 # Webscraper-Workshop
 
 ## Overview
-Welcome to the Webscraper Workshop codebase for ACM@UMD! This repository contains Python scripts designed for web scraping using various algorithms.
+Welcome to the Wikipedia Game Webscraper Workshop codebase for ACM@UMD! This repository contains Python scripts designed for Automating the Wikipedia Game using web scraping and various graph algorithms.
 
 ## Getting Started
 #### 1. Create project directory
