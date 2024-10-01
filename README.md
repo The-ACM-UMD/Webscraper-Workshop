@@ -10,6 +10,7 @@ Open your terminal or command prompt
 Create a new directory for the workshop
 
 `mkdir webscraper-workshop`
+
 `cd webscraper-workshop`
 
 #### 2. Set up a virtual environment
@@ -26,8 +27,11 @@ macOS/Linux: `source venv/bin/activate`
 
 #### 4. Clone the repo
 `git clone https://github.com/The-ACM-UMD/Webscraper-Workshop.git`
+
 `cd Webscraper-Workshop`
+
 On Windows: `explorer .`
+
 On Mac: `open .`
 
 #### 5. Open the code
