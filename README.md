@@ -27,6 +27,7 @@ macOS/Linux: `source ACMWorkshop/bin/activate`
 (If you get an error on this step run `Set-ExecutionPolicy RemoteSigned`)
 
 #### 3. Clone the repo
+
 If you have git installed: 
 
 `git clone https://github.com/The-ACM-UMD/Webscraper-Workshop.git`
@@ -34,11 +35,15 @@ If you have git installed:
 Otherwise:
 
 Download the code for this workshop: 
+
 Windows: `Invoke-WebRequest -Uri https://github.com/The-ACM-UMD/Webscraper-Workshop/archive/refs/heads/main.zip -OutFile Webscraper-Workshop.zip`
+
 Mac: `curl -L -o Webscraper-Workshop.zip https://github.com/The-ACM-UMD/Webscraper-Workshop/archive/refs/heads/main.zip`
 
 Unzip the code:
+
 Windows: `Expand-Archive -Path Webscraper-Workshop.zip -DestinationPath ./Webscraper-Workshop`
+
 Mac: `unzip Webscraper-Workshop.zip`
 
 Finally: `cd Webscraper-Workshop`
