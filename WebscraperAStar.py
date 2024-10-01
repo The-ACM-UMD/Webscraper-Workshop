@@ -5,6 +5,10 @@ from bs4 import BeautifulSoup  # to parse HTML content of web pages
 from urllib.parse import urljoin  # to join relative URLs to the base URL
 import heapq
 
+# global visited link set and url minheap (replacing the url queue)
+url_minheap = [] # A minimum heap with the links with the best chance of finding the shortest path at the top
+visited_set = set() # A visited set to make sure we don't revisit old links
+
 # Define the web scraper function
 def scrape(url, depth_left, path, filter_func, target, keywords):
     """
@@ -112,9 +116,6 @@ if __name__ == "__main__":
     # Starting URL for scraping
     start_url = 'https://en.wikipedia.org/wiki/Association_for_Computing_Machinery'
     target = "https://en.wikipedia.org/wiki/University_of_Maryland,_College_Park" # The target URL we are trying to reach
-
-    url_minheap = []
-    visited_set = set() # A visited set to make sure we don't revisit old links
 
     # CHANGE THESE AS YOU PLEASE
     max_depth = 10 # Maximum recursion depth

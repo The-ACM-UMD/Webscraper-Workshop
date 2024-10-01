@@ -4,6 +4,10 @@ import requests  # to handle HTTP requests
 from bs4 import BeautifulSoup  # to parse HTML content of web pages
 from urllib.parse import urljoin  # to join relative URLs to the base URL
 
+# global visited set and url queue
+visited_set = set() # a set that contains all of the links we have visited so we don't revisit the same links
+url_queue = [] # a queue containing the links we have to visit that the algorithm draws from at each step
+
 # Define a recursive web scraper function
 def scrape(url, depth_left, path, filter_func, target):
     """
@@ -89,16 +93,13 @@ if __name__ == "__main__":
     start_url = 'https://en.wikipedia.org/wiki/Association_for_Computing_Machinery'
     target = "https://en.wikipedia.org/wiki/University_of_Maryland,_College_Park" # The target URL we are trying to reach
 
-    url_queue = []
-    visited_set = set() # A visited set to make sure we don't revisit old links
-
     # CHANGE THESE AS YOU PLEASE
     max_depth = 10 # Maximum recursion depth
     def filter_func(next_url,current_url,path,title):
         return next_url.startswith("https://en.wikipedia.org/wiki/") and not ((next_url in current_url) or (current_url in next_url))
 
     url_queue.append((start_url, max_depth, [start_url]))
-    # Start the scraping process from the start_url with the specified maximum depth
+    # Instead of recursively scraping we now keep adding the links we want to click to the queue and scrape each link from the queue in turn
     while len(url_queue) != 0:
         current_url, depth, path = url_queue.pop()
         scrape(current_url, depth, path, filter_func, target)
