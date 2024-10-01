@@ -52,6 +52,11 @@ Mac: `curl -L -o Webscraper-Workshop.zip https://github.com/The-ACM-UMD/Webscrap
 
 Windows: `Expand-Archive -Path Webscraper-Workshop.zip -DestinationPath ./Webscraper-Workshop`
 
+If that doesn't work: `Add-Type -AssemblyName System.IO.Compression.FileSystem
+[System.IO.Compression.ZipFile]::ExtractToDirectory("Webscraper-Workshop.zip", "Webscraper-Workshop")`
+
+And if that still doesn't work: `tar -xf Webscraper-Workshop.zip`
+
 Mac: `unzip Webscraper-Workshop.zip`
 
 #### 4. Install Dependencies
