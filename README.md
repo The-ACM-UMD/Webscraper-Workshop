@@ -2,6 +2,7 @@
 
 Zoom Recording:
 https://umd.zoom.us/rec/share/t_YOtZPYssKepphJfaRMSbDb9Vu_cf5mVAuiKwzXRin1bFhCPQQmXryspw_2RIlr.HwS0oZU38GhgryJ5
+
 Password: 3M#Y9Tg1
 
 ## Overview
