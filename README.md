@@ -1,5 +1,9 @@
 # Wikipedia-Race-Webscraper-Workshop
 
+Zoom Recording:
+https://umd.zoom.us/rec/share/t_YOtZPYssKepphJfaRMSbDb9Vu_cf5mVAuiKwzXRin1bFhCPQQmXryspw_2RIlr.HwS0oZU38GhgryJ5
+Password: 3M#Y9Tg1
+
 ## Overview
 Welcome to the Wikipedia Game Webscraper Workshop codebase for ACM@UMD! This repository contains Python scripts designed for Automating the Wikipedia Game using web scraping and various graph algorithms.
 
